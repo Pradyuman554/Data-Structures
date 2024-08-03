@@ -1,0 +1,9 @@
+Postorder:
+1) If root is NULL, return the List
+2) Else:
+    Push root in stack
+    Set "previous" as NULL
+
+    while stack isnt empty:
+        Set "current" as top of stack
+            If (previous is NULL or )

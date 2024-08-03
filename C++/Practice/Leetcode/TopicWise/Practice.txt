@@ -1,0 +1,267 @@
+REMEMBER WE ARE SOLVING A MEDIUM LEVEL PROBLEM
+
+x = a^n + b^n
+
+We have to return the number of COMBINATIONS (c) for a and b.
+We are going to get this with the help of c++.
+
+that if (x = a^n + b^n) c++;
+
+Now, we to keep incrementing a and b.
+We will try one by one by deploying 2 for loops
+first for a then for b.
+Constraints will be kept from a = 1 till a < n-1 (because if we consider n, then b comes to be 0)
+
+
+a and b should be different, and should be int>0
+
+
+Thought: If a/=b, then can't we just deploy 1 loop and adjust b according to that.
+Psuedocode:
+
+for(a=1;a<n;a++){
+	for(b=1;b<n;b++){
+		if (x = a^n + b^n) c++;
+
+//This code won't run. Lets figure out why not.
+
+
+first a = 1, and b = 1.
+
+if (13 == pow (1,2) + pow (1,2) )		cout<< Nothing
+
+Nothing for a = 1.
+
+for a = 2, and b = 3.
+
+IT RAN!!
+
+Now, problem: The result should not repeat!
+Meaning, if result comes 2 and 3, it should not come 3 and 2.
+We can't put a/=b because it never is.
+Need to change constraints OR if-else.
+
+
+
+
+//THROUGH RECURSIONS:
+
+res = 0
+checkRec (num, x, k, n)
+
+if(x==0)	res++;	//Base condition: Meaning if we look at the last statement of for loop, we see the recursive. We are basically trying to get our x as close to 0 or -ve as possible. The number of times x<=0, we add res 
+
+Otherwise		
+r = floor ( num^(1.0/n) )		//Basically we do not need any bigger number than num^1/n and it reduces time complexity.
+
+for int (i = k+1) <= r
+{
+int a = x - i^n;							//To check if i^n > x or not 
+if (a >=0)	checkRec (num, x - i^n , i, n)		//If a = -ve, then the value ( x - pow (i,n) would be passed back ) 
+}
+
+return res;								//If a = -ve, x<0 then value of res would be returned
+
+//USE OF r = floor( num^(1.0/n) )
+1) To reduce the time complexity.
+2) 1.0 instead of 1, because if we do 1/2, then the value passed as power is actually 0 (because it is an int)
+   Eg. pow (10, 1/2) = 1
+   When we do 1.0, then the value passed is 0.5 and hence then result comes 3.16228.
+   Eg. pow (10, 1.0/2) = 3.16228
+   
+Why x should be smaller than 0?
+1) Actual calculation is being performed on x.
+Eg. 10 
+for (i=1)
+
+i=1)
+i = 1) x = 10 - 1^2 = 9; Bigger than 0
+i = 2) x = 9 - 2^2 = 5; Bigger than 0
+i = 3) x = 5 - 3^2 = -4; Smaller than 0, returns res = 0
+
+i=2)
+i=2) x = 10 - 2^2 = 6
+i=3) x = 6 - 3^2 = 0		//True
+
+i=3)
+i=3) x = 10 - 3^2 = 1
+....
+
+//How does this loop solve the problem of duplicacy?
+
+
+
+for (
+
+Eg. 40
+For i = 1
+1) x = 40 - 1 = 39
+2) x = 39 - 4 = 35
+3) x = 35 - 9 = 26
+4) x = 26 - 16 = 10
+5) x = 10 - 25 = -16 
+
+For i = 2
+1) 40 - 4 = 36
+2) 36 - 9 = 27
+3) 27 - 16 = 11
+4) 11 - .. = -ve
+
+For i = 3
+1) 40 - 9 = 31
+2) 31 - 16 = 15
+3) 15 - 25 = -10
+
+For i = 4
+1) 40 - 16 = 24
+2) 24 - 25 = -1
+
+For i = 5
+1) 40 - 25 = 15
+2) 15 - 36 = ..
+
+For i = 6
+1) 40 - 36 = 4
+
+
+13-08-2023
+Q1) Rat in a maze
+
+1) bool function to return IF THE BOX IS EMPTY OR NOT. Taking argument as DYNAMIC ARRAY.
+Arguments: (Array, x, y, n)	{
+	x<n && y<n && a[x][y] == 1
+
+2) ratinmaze (Array, x, y, n, solution array){
+	if (x=n-1 and y=n-1)	//means the rat has reached the goal
+		sol = 1;
+		return true;
+
+	if safe (Array,x,y,n)
+		sol == 1;
+	if (ratinmaze (Array, x+1, y, n, solution array){	//moving in x direction
+		return true;
+	if (ratinmaze..... (y+1,...)
+		return true;
+
+	sol = 0; //If none work, this is called backtracking, changing our solution to 0 to check other possibilities.
+	return false;
+	}
+	return false; //If no x or y values are SAFE.
+
+
+15-08-2023
+Q2) N - Queen Problem:
+if ( arr ( x = ind...full line is 0 || y = full line = 0, x+1, y+1... full line = 0)
+	arr[i][j] = queen
+
+Better:
+1) We are going to place exactly 1 Queen in every row (going downwards). 
+2) For checking: We do not need to look lower to the current row because we haven't placed our piece there yet
+	1) We need to check in both side upper diagonals
+	2) Need to check the column (vertical)
+	3) No need to check horizontally because no piece has been placed yet in that row.
+
+isSafe(int** arr, int x, int y, int n) {
+for (int row; row<n; row+++) {		//for checking row
+	if (arr[row][y] == 1)	return false;
+	}
+//for checking diagonals
+int row=x, col = y;
+while(row>=0 && col>=0){
+	if(arr[row][col]==1)	return false;
+	row--;
+	col--;
+}
+row=x, col = y;		//resetting
+while(row>=0 && col<n){
+	if(arr[row][col]==1)	return false;
+	row--;
+	col++;
+}
+return true;
+}
+
+bool Result(int** arr, int x, int n){
+	if(x>=n)		return true;
+	
+	for(int col=0;col<n;i++){
+		if( ifSafe(arr,x,col,n) ){
+			arr[x][col] = 1;
+		
+	if(Result(arr,x+1,n))		return true;
+	arr[x][col] = 0;
+	}
+	}
+	return false;
+}
+Steps:
+isSafe, check diagonals and column / row
+Result: Base condition: x>=n 
+		if (isSafe)	{
+			arr[x][col]=1;
+			return true; 
+		if (isSafe(x+1))	return true;
+			arr[x][col] = 0;
+		}
+		return false;
+
+
+
+Q3) Sudoku Solver:
+
+1) bool check (int**arr, int x , int y, int n ) {
+	if cell is empty {
+	a) If row has same
+		return false;
+	b) If column has same
+		return false;
+	c) If Grid has same
+		return false;
+
+Grid algo:
+int startRow = row - row%3, startcol = col - col%3;
+
+for(int i=0;i<3;i++){
+	for(int j=0;j<3;j++){
+		if(board[i+startRow][j+startcol]==N)	return false;
+	}
+}//Here, row and column are the REAL RECURSIVE INPUTS, i and j are just used to check space around them.
+
+	}
+	return true;
+}
+
+
+2) int Solve (int**arr, int row, int col, int n) {
+
+if(row=n || col=n){
+	return false;
+}
+if (col==(n-1)) {		//Last column reached
+	row++;
+	col = 0; }		//Go to next row
+
+if(grid[row][col]>0){
+	return Solve (arr, row, col++, n);
+}
+
+for(int i=1;i<num;num++){
+
+if (isSafe(arr,row,col,num)){
+	grid[row][col] = num;
+}
+
+if (ifSafe(arr,row,col+1,num)){
+	return true;
+}
+
+grid[row][col] = 0;
+}
+return false;
+}
+
+HW: Why won't it print directly in the main function rather than through utility function. 
+
+
+fib(10)
+0 1 1 2 3 5 8

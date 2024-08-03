@@ -1,0 +1,26 @@
+arrival, departure
+Find min platforms, no train is waiting
+
+Arrival and departure can NEVER BE SAME FOR A TRAIN,
+but Arrival of one can be equal to departure of another.
+BUT SAME PLATFORM CANNOT BE USED FOR ARRIVAL OF ONE TRAIN AND DEPARTURE OF ANOTHER
+-------------------------------------------
+for (int i = 1; i < n; i++) {
+         if (meet[i].start > limit) {
+            limit = meet[i].end;
+            answer.push_back(meet[i].pos);
+         }
+      }
+--
+for(int i=1;i<n;i++){
+    	    t1[i].done = true;
+    	    if(t1[i].start<=limit){
+    	        for(int j=i+1;j<n;j++){
+    	            if(t1[j].start>limit && t1[j].done==false)  {
+    	                t1[j].done = true;
+    	                continue;
+    	            }
+    	        }
+    	    }
+    	    
+    	}

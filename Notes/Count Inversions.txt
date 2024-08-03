@@ -1,0 +1,49 @@
+Count Inversions:
+fenwick tree
+Update
+Sum, return sum
+Store array into mapping and index, sort mapping
+Mark mask=i+1 according to mapping index
+answer=0
+come in reverse
+answer+=fenwicksum(mask[i]-1, fenwick)
+fenwickUpdate(mask[i])
+OR----------
+In merge sort, when arr[i]>arr[j], invcount+=mid-i
+
+
+
+Search a 2D matrix:
+Iterate through each row, and check if target is greater than its last element, if yes then continue
+Then when row is found, iterate through this row
+
+Binary search:
+while(row>n, col>=0)	if(found) return
+else if target<matrix[row][col]	col--
+Else row++
+
+
+
+Count Reverse Pairs
+count pairs:
+count(arr,low,high,mid)
+right=mid+1, count=0
+Iterate till mid,
+	while(right<=high and condition)			right++
+	count+=right-(mid+1)
+return count
+
+
+
+Unique Paths:
+Countpaths
+iterate i till n
+if(reach end)	return 1;
+if out of bounds	return 0;
+else if(dp!=-1)	return dp[i][j]
+else dp[i][j]=countPaths[i+1]+countPaths[j+1]
+
+uniquePaths:
+num=countpaths, whatever
+if size is 1, just return 1
+else return dp[0][0]
