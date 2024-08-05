@@ -25,6 +25,7 @@ public:
     }
 };
 
+
 class Solution {
 public:
     bool checkValidString(string s) {
@@ -41,10 +42,10 @@ public:
                 leftMin--;  //Assuming * is ')'
                 leftMax++;  //Assuming * is '('
             }
-            if(leftMin<0)   leftMin=0;
-            if(leftMax<0)   return false;
+            if(leftMin<0)   leftMin=0;  //If leftMin>0, that means ki bahaut opening parenthesis the
+            if(leftMax<0)   return false;   //Ki bahaut zyada closing parenthesis the
         }
-        return leftMin==0;
+        return leftMin==0;  //Equilibrium
     }
 };
 
