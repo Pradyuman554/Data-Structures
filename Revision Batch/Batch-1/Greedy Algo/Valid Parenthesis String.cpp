@@ -38,8 +38,8 @@ public:
                 leftMin--;  leftMax--;
             }
             else{
-                leftMin--;  //Assuming * is '('
-                leftMax++;  //Assuming * is ')'
+                leftMin--;  //Assuming * is ')'
+                leftMax++;  //Assuming * is '('
             }
             if(leftMin<0)   leftMin=0;
             if(leftMax<0)   return false;
