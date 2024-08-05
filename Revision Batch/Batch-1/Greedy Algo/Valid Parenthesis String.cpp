@@ -24,3 +24,8 @@ public:
         return solve(s, memo, 0, 0);
     }
 };
+
+/*
+- **`leftMin`**: This variable represents the minimum number of open parentheses `(` that could be present at a given point. It assumes the wildcard `` could be treated as a closing parenthesis `)`.
+- **`leftMax`**: This variable represents the maximum number of open parentheses `(` that could be present at a given point. It assumes the wildcard `` could be treated as an opening parenthesis `(`.
+*/
