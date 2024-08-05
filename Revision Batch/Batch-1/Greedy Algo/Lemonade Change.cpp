@@ -29,3 +29,13 @@ public:
         return true;
     }
 };
+
+/*
+2. **860. Lemonade Change**
+    1. **five=0, tens=0**
+        1. Agar 5 hai to **five++**
+        2. Agar 10 hai **to agar five de sakte hai (if five>0)** then dedo and tens++ kardo, **else return false**
+        3. Agar 20 hai to agar **1 ten** or **1 five** de sakte hai to do, ya agar **3 fives** de sakte hai to do **nahi to return false**
+    2. **return true**
+
+*/
