@@ -86,3 +86,37 @@ public:
         return result;
     }
 };
+
+
+
+//Another queue approach
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        if (!root) return {};  // Early return if root is null
+        
+        queue<pair<TreeNode*, int>> q; // Queue to store nodes with their levels
+        q.push({root, 0});
+        vector<pair<int, int>> vec;
+        
+        while (!q.empty()) {
+            TreeNode* top = q.front().first;
+            int currLevel = q.front().second;
+            q.pop();
+            
+            vec.push_back({top->val, currLevel});
+            
+            if (top->left) q.push({top->left, currLevel + 1});
+            if (top->right) q.push({top->right, currLevel + 1});
+        }
+        
+        int maxLevel = vec.back().second;
+        vector<vector<int>> ans(maxLevel + 1);
+        
+        for (auto it : vec) {
+            ans[it.second].push_back(it.first);
+        }
+        
+        return ans;
+    }
+};
