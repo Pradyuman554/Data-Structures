@@ -1,6 +1,5 @@
 class Solution {
 public:
-    
     bool solve(TreeNode* p, TreeNode* q){
         if(!p && !q)    return true;
 
