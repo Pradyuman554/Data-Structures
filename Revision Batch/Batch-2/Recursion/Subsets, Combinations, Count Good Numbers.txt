@@ -1,0 +1,36 @@
+4. **1922. Count Good Numbers**
+    1. Choices for even numbers is 5 (0,2,4,6,8) and for prime number is 4 (2,3,5,7).
+    2. Number of even slots is **ceil(n/2)** and prime slots is **(n/2).**   
+    3. Just multiply the result of these arrangements and we get our ans. Formula: pow(even slots, 5) * pow(odd slots, 4)
+    4. **Use binary exponentiation and apply MOD** for power calculation
+    5. Binary exponentiation:
+        1. ans=1
+        2. while(b>0)
+            1. if(b%2) //odd          
+                1. ans = (ans * a)%MOD
+                2. b--
+            2. else //even   
+                1. a = (a*a)%MOD
+                2. b/=2     
+        3. return ans
+5. Custom Question: Find **all subarrays of an array:**
+
+[Code](https://www.notion.so/Code-2cd95f5560de4d138dbf6530e47270f1?pvs=21)
+
+1. **78. Subsets: 2 Approaches:**
+    1. Recursive + Loop:
+        1. ans.push_back(ds)   //Because the for loop automatically gonna check that we dont get 
+                                             //out of bounds. **AND IN FACT OUR LAST SUBSET IS GOING TO BE 
+                                             //ADDED WHEN i=nums.size()**
+        2. for(int i=index; i<nums.size(); i++)
+            1. ds.push_back(nums[i])
+            2. solve(ans, ds, i+1, nums)
+            3. ds.pop_back()
+    2. Recursive only: UK
+2. **90. Subsets 2:** Similar to the above **recursive+loop approach.** Just check that the previous element should not be same as the current element inside the for loop. If yes, then **continue**
+3. **216. Combination Sum 3:**
+    1. If ds.size()==n and n==0 then push and return;
+    2. for(int i=num; i≤9; i++)
+        1. ds.push_back(i)
+        2. solve(i+1, n-i, ans, ds)   //Next number check kro ab **(same number ni ho skte)**
+        3. ds.pop_back()
