@@ -103,81 +103,95 @@
 
 
 //Convert infix expression to postfix 
-#include <bits/stdc++.h> 
-using namespace std; 
+// #include <bits/stdc++.h> 
+// using namespace std; 
 
-// Function to return precedence of operators 
-int prec(char c) 
-{ 
-	if (c == '^') 
-		return 3; 
-	else if (c == '/' || c == '*') 
-		return 2; 
-	else if (c == '+' || c == '-') 
-		return 1; 
-	else
-		return -1; 
-} 
+// // Function to return precedence of operators 
+// int prec(char c) 
+// { 
+// 	if (c == '^') 
+// 		return 3; 
+// 	else if (c == '/' || c == '*') 
+// 		return 2; 
+// 	else if (c == '+' || c == '-') 
+// 		return 1; 
+// 	else
+// 		return -1; 
+// } 
 
-// The main function to convert infix expression 
-// to postfix expression 
-void infixToPostfix(string s) 
-{ 
+// // The main function to convert infix expression 
+// // to postfix expression 
+// void infixToPostfix(string s) 
+// { 
 
-	stack<char> st; 
-	string result; 
+// 	stack<char> st; 
+// 	string result; 
 
-	for (int i = 0; i < s.length(); i++) { 
-		char c = s[i]; 
+// 	for (int i = 0; i < s.length(); i++) { 
+// 		char c = s[i]; 
 
-		// If the scanned character is 
-		// an operand, add it to output string. 
-		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') 
-			|| (c >= '0' && c <= '9')) 
-			result += c; 
+// 		// If the scanned character is 
+// 		// an operand, add it to output string. 
+// 		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') 
+// 			|| (c >= '0' && c <= '9')) 
+// 			result += c; 
 
-		// If the scanned character is an 
-		// ‘(‘, push it to the stack. 
-		else if (c == '(') 
-			st.push('('); 
+// 		// If the scanned character is an 
+// 		// ‘(‘, push it to the stack. 
+// 		else if (c == '(') 
+// 			st.push('('); 
 
-		// If the scanned character is an ‘)’, 
-		// pop and add to output string from the stack 
-		// until an ‘(‘ is encountered. 
-		else if (c == ')') { 
-			while (st.top() != '(') { 
-				result += st.top(); 
-				st.pop(); 
-			} 
-			st.pop(); 
-		} 
+// 		// If the scanned character is an ‘)’, 
+// 		// pop and add to output string from the stack 
+// 		// until an ‘(‘ is encountered. 
+// 		else if (c == ')') { 
+// 			while (st.top() != '(') { 
+// 				result += st.top(); 
+// 				st.pop(); 
+// 			} 
+// 			st.pop(); 
+// 		} 
 
-		// If an operator is scanned 
-		else { 
-			while (!st.empty() && prec(s[i]) <= prec(st.top())) { 
-				result += st.top();
-				st.pop(); 
-			} 
-			st.push(c); 
-		} 
-	} 
+// 		// If an operator is scanned 
+// 		else { 
+// 			while (!st.empty() && prec(s[i]) <= prec(st.top())) { 
+// 				result += st.top();
+// 				st.pop(); 
+// 			} 
+// 			st.push(c); 
+// 		} 
+// 	} 
 
-	// Pop all the remaining elements from the stack 
-	while (!st.empty()) { 
-		result += st.top(); 
-		st.pop(); 
-	} 
+// 	// Pop all the remaining elements from the stack 
+// 	while (!st.empty()) { 
+// 		result += st.top(); 
+// 		st.pop(); 
+// 	} 
 
-	cout << result << endl; 
-} 
+// 	cout << result << endl; 
+// } 
 
-// Driver code 
-int main() 
-{ 
-	string exp = "a+b*(c^d-e)^(f+g*h)-i"; 
+// // Driver code 
+// int main() 
+// { 
+// 	string exp = "a+b*(c^d-e)^(f+g*h)-i"; 
 
-	// Function call 
-	infixToPostfix(exp); 
+// 	// Function call 
+// 	infixToPostfix(exp); 
 	
-	return 0; 
+// 	return 0; 
+// }
+//
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	vector<int> arr{1,1,2,3,4,5,6,2,3,4,5,10,10,10,12,12,12};
+	map<int,int> mp;
+	for(int i: arr)	mp[i]++;
+
+	for(auto it: mp)	cout<<"Frequency of "<<it.first<<" is "<<it.second<<" "<<endl;
+
+	return 0;
 }
