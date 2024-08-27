@@ -4,7 +4,7 @@ using namespace std;
 
 class Graph{
     int V;  //Vertices
-    vector< list <int> > adj;   //Pointer to an array containing adjacency list
+    vector <list <int>> adj;   //Pointer to an array containing adjacency list
 
 public:
     Graph(int V){
