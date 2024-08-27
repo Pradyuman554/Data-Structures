@@ -80,46 +80,46 @@ BFS(int s){
 
 
 // DFS
-#include<bits/stdc++.h>
-using namespace std;
+// #include<bits/stdc++.h>
+// using namespace std;
 
-class Graph{
-    public:
+// class Graph{
+//     public:
 
-    map<int,bool> visited;
-    map<int,list<int> > adj;
+//     map<int,bool> visited;
+//     map<int,list<int> > adj;
 
-    void addEdge(int v, int w){
-        adj[v].push_back(w);
-    }
+//     void addEdge(int v, int w){
+//         adj[v].push_back(w);
+//     }
 
-    void DFS(int v){
-        visited[v] = true;      //Mark current node as visited and print node
-        cout<< v << " ";
+//     void DFS(int v){
+//         visited[v] = true;      //Mark current node as visited and print node
+//         cout<< v << " ";
     
-        for(auto itr = adj[v].begin(); itr!= adj[v].end();++itr){
-            if(!visited[*itr])    DFS(*itr);
-        }
-    }
-};
+//         for(auto itr = adj[v].begin(); itr!= adj[v].end();++itr){
+//             if(!visited[*itr])    DFS(*itr);
+//         }
+//     }
+// };
 
-int main()
-{
-    Graph g;
+// int main()
+// {
+//     Graph g;
 
-    g.addEdge(0,1);
-    g.addEdge(1,2);
-    g.addEdge(2,3);
-    g.addEdge(3,4);
-    g.addEdge(4,5);
-    g.addEdge(5,6);
+//     g.addEdge(0,1);
+//     g.addEdge(1,2);
+//     g.addEdge(2,3);
+//     g.addEdge(3,4);
+//     g.addEdge(4,5);
+//     g.addEdge(5,6);
 
-    cout<<"DFS: ";
+//     cout<<"DFS: ";
 
-    g.DFS(0);
+//     g.DFS(0);
     
-    return 0;
-}
+//     return 0;
+// }
 // /*
 // class Graph:
 // 1) 2 Maps: visited(bool), adj
