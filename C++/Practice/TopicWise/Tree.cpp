@@ -304,8 +304,7 @@ Node* newNode(int data){
     return temp;
 }
 
-vector<int> Postorder(Node* root)
-{
+vector<int> Postorder(Node* root){
     vector<int> postOrderList;
 
     if (root == NULL)        return postOrderList;
@@ -370,6 +369,7 @@ int main()
     
     return 0;
 }
+
 /*
 1) If root is NULL, return the list, prev=NULL, stack, list
 2) Else while(stack is not empty):
