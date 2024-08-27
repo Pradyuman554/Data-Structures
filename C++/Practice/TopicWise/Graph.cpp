@@ -1,45 +1,45 @@
 // //BFS
-// #include<bits/stdc++.h>
-// using namespace std;
+#include<bits/stdc++.h>
+using namespace std;
 
-// class Graph{
-//     int V;  //Vertices
-//     vector< list <int> > adj;   //Pointer to an array containing adjacency list
+class Graph{
+    int V;  //Vertices
+    vector< list <int> > adj;   //Pointer to an array containing adjacency list
 
-// public:
-//     Graph(int V){
-//     this->V = V;
-//     adj.resize(V);
-//     }
+public:
+    Graph(int V){
+    this->V = V;
+    adj.resize(V);
+    }
 
-//     void addEdge(int v, int w){     //Add w to v's list
-//     adj[v].push_back(w);
-//     }
+    void addEdge(int v, int w){     //Add w to v's list
+    adj[v].push_back(w);
+    }
 
-//     void BFS(int s){    //Print BFS
-//         vector<bool> visited;
-//         visited.resize(V,false);    //Resize the bool vector visited (which is a vector to store whether the vertex was visited or not, because we can't revisit the same vector can we), and initialize with value false
+    void BFS(int s){    //Print BFS
+        vector<bool> visited;
+        visited.resize(V,false);    //Resize the bool vector visited (which is a vector to store whether the vertex was visited or not, because we can't revisit the same vector can we), and initialize with value false
     
-//     //Making a queue in the form of LIST.
-//         list<int> queue;    //Create a queue for BFS, which is going to store the traversed non - repeating elements
+    //Making a queue in the form of LIST.
+        list<int> queue;    //Create a queue for BFS, which is going to store the traversed non - repeating elements
 
-//         visited[s] = true;  //Mark the current node as visited
-//         queue.push_back(s); //Now push_back the current node value into queue
+        visited[s] = true;  //Mark the current node as visited
+        queue.push_back(s); //Now push_back the current node value into queue
 
-//         while(!queue.empty()){
-//             s = queue.front();  //DEQUEUE (return the first element and remove it) a vertex from queue and print
-//             cout<<s<<" ";
-//             queue.pop_front();  //Shoot and Scoot
+        while(!queue.empty()){
+            s = queue.front();  //DEQUEUE (return the first element and remove it) a vertex from queue and print
+            cout<<s<<" ";
+            queue.pop_front();  //Shoot and Scoot
 
-//             for(auto adjacent : adj[s]){    //Get all adjacent vertices of dequeued vertex s. 
-//             if(!visited[adjacent]){
-//                 visited[adjacent] = true;
-//                 queue.push_back(adjacent);
-//             }
-//             }
-//         }
-//     }
-// };
+            for(auto adjacent : adj[s]){    //Get all adjacent vertices of dequeued vertex s. 
+            if(!visited[adjacent]){
+                visited[adjacent] = true;
+                queue.push_back(adjacent);
+            }
+            }
+        }
+    }
+};
 
 // int main(){
 
